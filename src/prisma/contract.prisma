@@ -1,21 +1,40 @@
 // use prisma-8
+// Contract inferred from the live database schema. Edit as needed, then run `prisma contract emit`.
 
-model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  username  String?
-  name      String?
-  posts     Post[]
-  createdAt TimestamptzString @default(now())
-  updatedAt temporal.updatedAtString()
+model Users {
+  id       Int          @id(map: "users_pkey") @default(autoincrement())
+  username String @unique(map: "users_username_key")
+  email    String @unique(map: "users_email_key")
+  password String
+  role     VarChar(50)  @default("user")
+  comments Comments[]
+  posts    Posts[]
+
+  @@map("users")
 }
 
-model Post {
-  id        Int      @id @default(autoincrement())
+model Posts {
+  id        Int          @id(map: "posts_pkey") @default(autoincrement())
+  authorId  Int          @map("author_id")
   title     String
-  content   String?
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
-  createdAt TimestamptzString @default(now())
-  updatedAt temporal.updatedAtString()
+  content   String
+  likes     Int          @default(0)
+  published Boolean      @default(false)
+  createdAt Timestamp    @default(now()) @map("created_at")
+  updatedAt Timestamp    @default(now()) @map("updated_at")
+  comments  Comments[]
+  author    Users        @relation(fields: [authorId], references: [id], map: "posts_author_id_fkey", index: false)
+
+  @@map("posts")
+}
+
+model Comments {
+  id        Int       @id(map: "comments_pkey") @default(autoincrement())
+  authorId  Int       @map("author_id")
+  postId    Int       @map("post_id")
+  createdAt Timestamp @default(now()) @map("created_at")
+  author    Users     @relation(fields: [authorId], references: [id], map: "comments_author_id_fkey", index: false)
+  post      Posts     @relation(fields: [postId], references: [id], map: "comments_post_id_fkey", index: false)
+
+  @@map("comments")
 }
