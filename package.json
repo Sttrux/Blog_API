@@ -1,52 +1,30 @@
 {
-  "name": "blog_api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "contract:emit": "prisma contract emit",
-    "dev": "node --watch app.ts"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Sttrux/Blog_API.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Sttrux/Blog_API/issues"
-  },
-  "homepage": "https://github.com/Sttrux/Blog_API#readme",
-  "type": "module",
   "dependencies": {
     "@prisma/orm-postgres": "^8.0.0-rc.12",
-    "@quixo3/prisma-session-store": "^3.1.21",
     "bcryptjs": "^3.0.3",
-    "cors": "^2.8.6",
-    "dotenv": "^18.0.4",
+    "dotenv": "^18.0.5",
     "express": "^5.2.1",
-    "express-session": "^1.19.0",
     "express-validator": "^7.3.2",
     "jsonwebtoken": "^9.0.3",
-    "multer": "^2.4.0",
     "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "@prisma/cli-engine": "^0.6.1",
     "@types/bcryptjs": "^2.4.6",
-    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
-    "@types/express-session": "^1.19.0",
     "@types/jsonwebtoken": "^9.0.10",
-    "@types/multer": "^2.2.0",
     "@types/node": "^26.6.3",
     "@types/passport": "^1.0.17",
+    "@types/passport-jwt": "^4.0.1",
     "@types/passport-local": "^1.0.38",
     "prisma": "^8.0.0-rc.17",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
-  }
+  },
+  "scripts": {
+    "contract:emit": "prisma contract emit"
+  },
+  "type": "module"
 }

@@ -30,6 +30,13 @@
                   "kind": "scalar"
                 }
               },
+              "content": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
               "createdAt": {
                 "nullable": false,
                 "type": {
@@ -90,6 +97,9 @@
               "fields": {
                 "authorId": {
                   "column": "author_id"
+                },
+                "content": {
+                  "column": "content"
                 },
                 "createdAt": {
                   "column": "created_at"
@@ -152,8 +162,11 @@
               "title": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/text@1",
-                  "kind": "scalar"
+                  "codecId": "sql/varchar@1",
+                  "kind": "scalar",
+                  "typeParams": {
+                    "length": 255
+                  }
                 }
               },
               "updatedAt": {
@@ -233,8 +246,11 @@
               "email": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/text@1",
-                  "kind": "scalar"
+                  "codecId": "sql/varchar@1",
+                  "kind": "scalar",
+                  "typeParams": {
+                    "length": 255
+                  }
                 }
               },
               "id": {
@@ -247,8 +263,11 @@
               "password": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/text@1",
-                  "kind": "scalar"
+                  "codecId": "sql/varchar@1",
+                  "kind": "scalar",
+                  "typeParams": {
+                    "length": 255
+                  }
                 }
               },
               "role": {
@@ -264,8 +283,11 @@
               "username": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/text@1",
-                  "kind": "scalar"
+                  "codecId": "sql/varchar@1",
+                  "kind": "scalar",
+                  "typeParams": {
+                    "length": 255
+                  }
                 }
               }
             },
@@ -337,6 +359,11 @@
                 "author_id": {
                   "codecId": "pg/int4@1",
                   "nativeType": "int4",
+                  "nullable": false
+                },
+                "content": {
+                  "codecId": "pg/text@1",
+                  "nativeType": "text",
                   "nullable": false
                 },
                 "created_at": {
@@ -457,9 +484,12 @@
                   "nullable": false
                 },
                 "title": {
-                  "codecId": "pg/text@1",
-                  "nativeType": "text",
-                  "nullable": false
+                  "codecId": "sql/varchar@1",
+                  "nativeType": "character varying",
+                  "nullable": false,
+                  "typeParams": {
+                    "length": 255
+                  }
                 },
                 "updated_at": {
                   "codecId": "pg/timestamp-temporal@1",
@@ -502,9 +532,12 @@
             "users": {
               "columns": {
                 "email": {
-                  "codecId": "pg/text@1",
-                  "nativeType": "text",
-                  "nullable": false
+                  "codecId": "sql/varchar@1",
+                  "nativeType": "character varying",
+                  "nullable": false,
+                  "typeParams": {
+                    "length": 255
+                  }
                 },
                 "id": {
                   "codecId": "pg/int4@1",
@@ -516,9 +549,12 @@
                   "nullable": false
                 },
                 "password": {
-                  "codecId": "pg/text@1",
-                  "nativeType": "text",
-                  "nullable": false
+                  "codecId": "sql/varchar@1",
+                  "nativeType": "character varying",
+                  "nullable": false,
+                  "typeParams": {
+                    "length": 255
+                  }
                 },
                 "role": {
                   "codecId": "sql/varchar@1",
@@ -533,9 +569,12 @@
                   }
                 },
                 "username": {
-                  "codecId": "pg/text@1",
-                  "nativeType": "text",
-                  "nullable": false
+                  "codecId": "sql/varchar@1",
+                  "nativeType": "character varying",
+                  "nullable": false,
+                  "typeParams": {
+                    "length": 255
+                  }
                 }
               },
               "foreignKeys": [],
@@ -567,7 +606,7 @@
         "kind": "postgres-schema"
       }
     },
-    "storageHash": "d71373e8d54d9a17538c91151fc22b6243df650b5735f59c64c72faca0b0b169"
+    "storageHash": "df2fbf291179fe0bd08fc952429f644b6f79d6c919fc6ebaaefb02a3a98f2afd"
   },
   "capabilities": {
     "postgres": {
